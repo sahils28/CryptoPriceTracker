@@ -1,24 +1,31 @@
 import React, { useState } from "react";
 import { useCryptoData } from "../hooks/useCryptoData";
-import CryptoCard from "../components/CrytoCard";
+import CryptoCard from "../components/CryptoCard"; // ✅ Fixed typo in import
 import SearchBar from "../components/SearchBar";
-import ThemeToggle from "../components/ThemeToggle";
+import RefreshButton from "../components/RefreshButton"; // ✅ Added Refresh Button
 
 const HomePage = () => {
     const [searchQuery, setSearchQuery] = useState("");
-    const { data, isLoading } = useCryptoData();
+    const { data, isLoading, refetch } = useCryptoData(); // ✅ Added `refetch` for Refresh Button
 
     const filteredData = data?.filter(crypto => 
         crypto.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
     return (
         <div className="container">
-            <div className="flex justify-between">
-                <h1 className="text-3xl font-bold">Crypto Dashboard</h1>
-                <ThemeToggle />
+            <h1 className="title">Crypto Dashboard</h1> {/* ✅ Removed Flex Box and ThemeToggle */}
+
+            {/* 🔹 Added Better Layout for Search & Refresh */}
+            <div className="button-container">
+                <SearchBar setSearchQuery={setSearchQuery} />
+                <RefreshButton refetch={refetch} /> {/* ✅ Added Refresh Button */}
             </div>
-            <SearchBar setSearchQuery={setSearchQuery} />
-            {isLoading ? <p>Loading...</p> : <div className="grid grid-cols-2 gap-4">{filteredData.map(coin => <CryptoCard key={coin.id} coin={coin} />)}</div>}
+
+            {isLoading ? <p>Loading...</p> : 
+                <div className="crypto-grid">
+                    {filteredData.map(coin => <CryptoCard key={coin.id} coin={coin} />)}
+                </div>
+            }
         </div>
     );
 };

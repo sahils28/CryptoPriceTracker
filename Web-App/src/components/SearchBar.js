@@ -14,7 +14,7 @@ const SearchBar = ({ onSelect }) => {
     };
 
     return (
-        <div className="relative w-full">
+        <div className="search-container">
             <input
                 type="text"
                 placeholder="Search any cryptocurrency..."
@@ -25,10 +25,10 @@ const SearchBar = ({ onSelect }) => {
                 }}
             />
             {suggestions.length > 0 && (
-                <ul className="absolute bg-white w-full shadow-lg rounded-lg">
+                <ul className="suggestions">
                     {suggestions.map((coin) => (
-                        <li key={coin.id} onClick={() => onSelect(coin.id)} className="p-2 hover:bg-gray-200 cursor-pointer">
-                            <img src={coin.thumb} alt={coin.name} className="w-6 h-6 inline-block mr-2" />
+                        <li key={coin.id} onClick={() => onSelect(coin.id)} className="suggestion-item">
+                            <img src={coin.thumb} alt={coin.name} className="icon" />
                             {coin.name} ({coin.symbol.toUpperCase()})
                         </li>
                     ))}

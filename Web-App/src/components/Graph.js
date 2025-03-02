@@ -28,13 +28,35 @@ const Graph = ({ prices }) => {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-            legend: { display: false },
-            tooltip: { enabled: true }
+            legend: {
+                labels: {
+                    color: "#ffffff", // ✅ White color for legend text
+                },
+            },
+            tooltip: {
+                backgroundColor: "rgba(0, 0, 0, 0.8)", // ✅ Dark background for contrast
+                titleColor: "#ffffff", // ✅ White title
+                bodyColor: "#ffffff", // ✅ White body text
+            },
         },
         scales: {
-            x: { type: "category" }, // ✅ Explicitly set X-axis scale to `category`
-            y: { beginAtZero: false }
-        }
+            x: {
+                ticks: {
+                    color: "#ffffff", // ✅ White text for X-axis labels
+                },
+                grid: {
+                    color: "rgba(255, 255, 255, 0.2)", // ✅ Light grid lines
+                },
+            },
+            y: {
+                ticks: {
+                    color: "#ffffff", // ✅ White text for Y-axis labels
+                },
+                grid: {
+                    color: "rgba(255, 255, 255, 0.2)", // ✅ Light grid lines
+                },
+            },
+        },
     };
 
     return <div className="w-full h-64"><Line key={JSON.stringify(prices)} data={data} options={options} /></div>;
