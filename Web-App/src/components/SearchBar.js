@@ -1,40 +1,42 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useRouter } from "next/router";
 
-const SearchBar = ({ onSelect }) => {
-    const [query, setQuery] = useState("");
-    const [suggestions, setSuggestions] = useState([]);
+const SearchBar = ({ coins }) => {
+    const [searchQuery, setSearchQuery] = useState("");
+    const router = useRouter();
 
-    const fetchCoins = async (search) => {
-        if (!search) return;
-        const response = await axios.get("https://api.coingecko.com/api/v3/search", {
-            params: { query: search }
-        });
-        setSuggestions(response.data.coins);
-    };
+    // Filter coins based on search input
+    const filteredCoins = coins?.filter(coin =>
+        coin.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
         <div className="search-container">
             <input
                 type="text"
                 placeholder="Search any cryptocurrency..."
-                className="input"
-                onChange={(e) => {
-                    setQuery(e.target.value);
-                    fetchCoins(e.target.value);
-                }}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="search-input"
             />
-            {suggestions.length > 0 && (
-                <ul className="suggestions">
-                    {suggestions.map((coin) => (
-                        <li key={coin.id} onClick={() => onSelect(coin.id)} className="suggestion-item">
-                            <img src={coin.thumb} alt={coin.name} className="icon" />
+
+            {/* Show suggestions when there is a search input */}
+            {searchQuery && (
+                <div className="search-dropdown">
+                    {filteredCoins.map((coin) => (
+                        <button 
+                            key={coin.id} 
+                            className="search-suggestion" 
+                            onClick={() => router.push(`/coin/${coin.id}`)}
+                        >
+                            <img src={coin.image} alt={coin.name} className="coin-icon" />
                             {coin.name} ({coin.symbol.toUpperCase()})
-                        </li>
+                        </button>
                     ))}
-                </ul>
+                </div>
             )}
         </div>
     );
 };
+
 export default SearchBar;
