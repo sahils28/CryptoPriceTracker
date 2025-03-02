@@ -1,0 +1,31 @@
+{
+  "name": "web-app",
+  "version": "1.0.0",
+  "main": "next.config.js",
+  "scripts": {
+    "start": "next start",
+    "dev": "nodemon server.js",
+    "build": "next build",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@tanstack/react-query": "^5.66.11",
+    "@tanstack/react-query-devtools": "^5.66.11",
+    "axios": "^1.8.1",
+    "chart.js": "^4.4.8",
+    "next": "^14.2.24",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^18.3.1",
+    "react-query": "^3.39.3",
+    "tailwindcss": "^4.0.9"
+  },
+  "devDependencies": {
+    "jest": "^29.6.1",
+    "nodemon": "^3.1.9"
+  }
+}
