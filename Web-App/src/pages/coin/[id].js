@@ -10,10 +10,10 @@ const CoinPage = () => {
     const { data, error, isLoading } = useCoinDetails(id);
 
     useEffect(() => {
-        console.log("✅ Next.js Router Query ID:", id); // ✅ Log to check if `id` is being captured
+        console.log("Next.js Router Query ID:", id); //Log to check if `id` is being captured
     }, [id]);
 
-    // 🛠 Prevent rendering until `id` is available
+    //Prevent rendering until `id` is available
     if (!id) {
         return <p className="loading-text">Loading coin details...</p>;
     }

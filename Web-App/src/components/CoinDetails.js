@@ -40,7 +40,6 @@ const CoinDetails = ({ data, error, isLoading }) => {
                 </div>
             </div>
 
-            {/* ✅ Show Graph */}
             <div className="chart-container">
                 {isHistoryLoading ? (
                     <p className="loading-text">Loading price trend...</p>

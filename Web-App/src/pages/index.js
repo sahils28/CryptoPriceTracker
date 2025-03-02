@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import { useCryptoData } from "../hooks/useCryptoData";
-import CryptoCard from "../components/CryptoCard"; // ✅ Fixed typo in import
+import CryptoCard from "../components/CryptoCard"; 
 import SearchBar from "../components/SearchBar";
-import RefreshButton from "../components/RefreshButton"; // ✅ Added Refresh Button
+import RefreshButton from "../components/RefreshButton"; 
 
 const HomePage = () => {
     const [searchQuery, setSearchQuery] = useState("");
-    const { data, isLoading, refetch } = useCryptoData(); // ✅ Added `refetch` for Refresh Button
+    const { data, isLoading, refetch } = useCryptoData(); 
 
     const filteredData = data?.filter(crypto => 
         crypto.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
     return (
         <div className="container">
-            <h1 className="title">Crypto Dashboard</h1> {/* ✅ Removed Flex Box and ThemeToggle */}
+            <h1 className="title">Crypto Dashboard</h1> 
 
-            {/* 🔹 Added Better Layout for Search & Refresh */}
+            
             <div className="button-container">
                 <SearchBar setSearchQuery={setSearchQuery} />
-                <RefreshButton refetch={refetch} /> {/* ✅ Added Refresh Button */}
+                <RefreshButton refetch={refetch} /> 
             </div>
 
             {isLoading ? <p>Loading...</p> : 

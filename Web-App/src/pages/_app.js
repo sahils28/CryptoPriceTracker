@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import "../styles/global.css";  // ✅ Ensure correct CSS file is imported
+import "../styles/global.css";  //Ensure correct CSS file is imported
 
-// ✅ Create Query Client
+//Create Query Client
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {

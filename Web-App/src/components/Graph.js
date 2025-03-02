@@ -10,12 +10,11 @@ import {
     Legend
 } from "chart.js";
 
-// ✅ Register required Chart.js components
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const Graph = ({ prices }) => {
     const data = {
-        labels: prices.map((_, index) => `Day ${index + 1}`), // ✅ Label X-Axis correctly
+        labels: prices.map((_, index) => `Day ${index + 1}`), 
         datasets: [{
             label: "Price Trend (Last 7 Days)",
             data: prices,
@@ -30,30 +29,30 @@ const Graph = ({ prices }) => {
         plugins: {
             legend: {
                 labels: {
-                    color: "#ffffff", // ✅ White color for legend text
+                    color: "#ffffff", //White color for legend text
                 },
             },
             tooltip: {
-                backgroundColor: "rgba(0, 0, 0, 0.8)", // ✅ Dark background for contrast
-                titleColor: "#ffffff", // ✅ White title
-                bodyColor: "#ffffff", // ✅ White body text
+                backgroundColor: "rgba(0, 0, 0, 0.8)", 
+                titleColor: "#ffffff", 
+                bodyColor: "#ffffff", 
             },
         },
         scales: {
             x: {
                 ticks: {
-                    color: "#ffffff", // ✅ White text for X-axis labels
+                    color: "#ffffff", 
                 },
                 grid: {
-                    color: "rgba(255, 255, 255, 0.2)", // ✅ Light grid lines
+                    color: "rgba(255, 255, 255, 0.2)", 
                 },
             },
             y: {
                 ticks: {
-                    color: "#ffffff", // ✅ White text for Y-axis labels
+                    color: "#ffffff", 
                 },
                 grid: {
-                    color: "rgba(255, 255, 255, 0.2)", // ✅ Light grid lines
+                    color: "rgba(255, 255, 255, 0.2)", 
                 },
             },
         },
